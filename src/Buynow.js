@@ -22,20 +22,28 @@ function Buynow() {
   useEffect(() => {
     const getData =  async() => {
       try {
-        const res = await axios.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,DOGE&tsyms=INR')
+        const res = await axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=inr&order=market_cap_desc&per_page=10&page=1&sparkline=false')
         const newTiles = [...tiles]
         let index = 0
-        for(let value in res.data){
-          newTiles[index].rate = res.data[value].INR
-          index++
+        if(res.data.length > 1){
+          for(const c of res.data){
+            if(c.symbol.toLowerCase() === tiles[index].name.toLowerCase()){
+              newTiles[index].rate = c.current_price
+              index++
+            }
+            if(index > tiles.length){
+              break
+            }
+          }
+          setTiles(newTiles)
         }
-        setTiles(newTiles)
+        
       } catch(err) {
         console.log(err)
       }
     }
     getData()
-  })
+  }, [])
 
 
   const handleSelect = (data) => {
