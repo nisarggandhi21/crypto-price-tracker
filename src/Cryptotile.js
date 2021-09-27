@@ -11,7 +11,7 @@ const Cryptotile = ({ data, selected, onClick }) => {
         <div className="card-body">
           <img className="cryptocoin-icon" src={icon} alt="icon" />
           <div>{name}</div>
-          <div>{rate}</div>
+          <div> ₹ {rate}</div>
         </div>
       </div>
     </div>
