@@ -9,10 +9,10 @@ const Transactions = ({ list }) => {
           list.map((item) => (
             <li key={item.id} className="list-group-item">
               <span>
-                <strong>{item.name}</strong>
+                <strong style={{backgroundColor: '#fff', color: '#000'}}>{item.name}</strong>
               </span>
               {": "}
-              <span>{item.converted}</span>
+              <span style={{backgroundColor: '#fff', color: '#000'}}>{item.converted}</span>
             </li>
           ))
         ) : (
