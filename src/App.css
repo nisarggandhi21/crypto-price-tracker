@@ -1,0 +1,8 @@
+.Nav__head,
+.Nav__Link {
+  color: white !important;
+}
+
+.User__name {
+  margin-right: 20px;
+}
